@@ -1,6 +1,6 @@
 # DevOps Deployment Automation with Terraform, AWS and Docker - Starter Code
 
-## This is Dhanush Dinesh's repo Test PR
+## This is Dhanush Dinesh's repo 
 ß
 This project contains the starter code for our course: [DevOps Deployment Automation with Terraform, AWS and Docker](https://londonapp.dev/c3).
 
