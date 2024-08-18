@@ -6,22 +6,22 @@ login:
 
 # Initialize the terraform 
 init:
-	docker compose run --rm terraform -chdir=setup init -migrate-state
+	docker compose run --rm terraform -chdir=deploy init -migrate-state
 
 fmt:
-	docker compose run --rm terraform -chdir=setup fmt
+	docker compose run --rm terraform -chdir=deploy fmt
 
 val:
-	docker compose run --rm terraform -chdir=setup validate
+	docker compose run --rm terraform -chdir=deploy validate
 
 plan:
-	docker compose run --rm terraform -chdir=setup plan
+	docker compose run --rm terraform -chdir=deploy plan
 
 apply:
-	docker compose run --rm terraform -chdir=setup apply
+	docker compose run --rm terraform -chdir=deploy apply
 
 output:
-	docker compose run --rm terraform -chdir=setup output
+	docker compose run --rm terraform -chdir=deploy output
 
 secret:
-	docker compose run --rm terraform -chdir=setup output cd_user_access_key_secret
+	docker compose run --rm terraform -chdir=deploy output cd_user_access_key_secret
