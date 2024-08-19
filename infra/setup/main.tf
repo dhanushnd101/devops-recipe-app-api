@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "dnd-recipe-app-tf-state"
+    bucket         = "dnd-recipe-app"
     key            = "tf-state-setup"
     region         = "us-east-1"
     encrypt        = true

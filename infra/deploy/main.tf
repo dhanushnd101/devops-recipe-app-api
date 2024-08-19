@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket               = "dnd-recipe-app-tf-state"
+    bucket               = "dnd-recipe-app"
     key                  = "tf-state-deploy"
     workspace_key_prefix = "tf-state-deploy-env"
     region               = "us-east-1"
