@@ -25,3 +25,6 @@ output:
 
 secret:
 	docker compose run --rm terraform -chdir=deploy output cd_user_access_key_secret
+
+destroy:
+	docker compose run --rm terraform -chdir=deploy destroy
