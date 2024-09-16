@@ -4,16 +4,19 @@
 
 resource "aws_db_subnet_group" "main" {
   name       = "${local.prefix}-main"
-  subnet_ids = [aws_subnet.private_a.id, aws_subnet.private_b.id]
+  subnet_ids = [
+    aws_subnet.private_a.id, 
+    aws_subnet.private_b.id
+    ]
 
   tags = {
-    name = "${local.prefix}-db-subnet-group"
+    Name = "${local.prefix}-db-subnet-group"
   }
 
 }
 
 resource "aws_security_group" "rds" {
-  description = "Aloos access to the RDS database instance"
+  description = "Allow access to the RDS database instance"
   name        = "${local.prefix}-rds-inbound-access"
   vpc_id      = aws_vpc.main.id
 
@@ -24,7 +27,7 @@ resource "aws_security_group" "rds" {
   }
 
   tags = {
-    name = "${local.prefix}-db-security-group"
+    Name = "${local.prefix}-db-security-group"
   }
 }
 
@@ -46,6 +49,6 @@ resource "aws_db_instance" "main" {
   vpc_security_group_ids     = [aws_security_group.rds.id]
 
   tags = {
-    name = "${local.prefix}-main"
+    Name = "${local.prefix}-main"
   }
 }
