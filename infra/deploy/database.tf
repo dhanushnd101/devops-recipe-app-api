@@ -3,7 +3,8 @@
 ############
 
 resource "aws_db_subnet_group" "main" {
-  name = "${local.prefix}-main"
+  name        = "${local.prefix}-main"
+  description = "aws_DB subnet group for RDS"
   subnet_ids = [
     aws_subnet.private_a.id,
     aws_subnet.private_b.id
