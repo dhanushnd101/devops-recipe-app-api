@@ -1,7 +1,6 @@
 ##############################################
-# Create ECR repos for storing Docker Images #
+# Create ECR repos for storing Docker images #
 ##############################################
-
 
 resource "aws_ecr_repository" "app" {
   name                 = "recipe-app-api-app"
@@ -9,7 +8,7 @@ resource "aws_ecr_repository" "app" {
   force_delete         = true
 
   image_scanning_configuration {
-    # NOTE: Update to true for real deployments
+    # NOTE: Update to true for real deployments.
     scan_on_push = false
   }
 }
@@ -20,7 +19,7 @@ resource "aws_ecr_repository" "proxy" {
   force_delete         = true
 
   image_scanning_configuration {
-    # NOTE: Update to true for real deployments
+    # NOTE: Update to true for real deployments.
     scan_on_push = false
   }
 }

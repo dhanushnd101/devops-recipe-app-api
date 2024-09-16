@@ -8,7 +8,7 @@ on:
         description: "Username from Docker Hub aucthentication"
       DOCKERHUB_TOKEN:
         required: true
-        description: "Password from Docker Hub aucthentication"
+        description: "Token for DockerHub auth"
 
 jobs:
   python:
@@ -26,7 +26,7 @@ jobs:
         run: docker compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
       - name: Python flake8
         run: docker compose run --rm app sh -c "flake8"
-  
+
   terraform:
     name: Terraform
     runs-on: ubuntu-22.04
@@ -43,10 +43,12 @@ jobs:
           cd infra/
           docker compose run --rm terraform -chdir=deploy/ init -backend=false
           docker compose run --rm terraform -chdir=setup/ init -backend=false
-          docker compose run --rm terraform -chdir=deploy/ fmt -check
+          docker compose run --rm terraform -chdir=setup/ validate
           docker compose run --rm terraform -chdir=setup/ fmt -check
           docker compose run --rm terraform -chdir=deploy/ validate
-          docker compose run --rm terraform -chdir=setup/ validate
+          docker compose run --rm terraform -chdir=deploy/ fmt -check
+          
+          
 
 
  
