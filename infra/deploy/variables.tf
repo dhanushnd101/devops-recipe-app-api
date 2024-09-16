@@ -1,15 +1,15 @@
 variable "prefix" {
-  description = "The prefix to use for all resources in this example"
+  description = "Prefix for resources in AWS"
   default     = "dra"
 }
 
 variable "project" {
-  description = "The name of the project used by the default tags"
+  description = "Project name for tagging resources"
   default     = "dnd-recipe-app"
 }
 
 variable "contact" {
-  description = "The contact information used by the default tags"
+  description = "Contact email for tagging resources"
   default     = "dhanushndinesh@gmail.com"
 }
 

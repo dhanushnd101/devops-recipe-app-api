@@ -1,6 +1,6 @@
-##############################################################################################
-# Created IAM user and policies for Continuous Integration and Continuous Deployment account #
-##############################################################################################
+#######################################################################
+# Create IAM user and policies for Continuous Deployment (CD) account #
+#######################################################################
 
 resource "aws_iam_user" "cd" {
   name = "aws_iam-app-api-cd"
@@ -44,7 +44,7 @@ data "aws_iam_policy_document" "tf_backend" {
 
 resource "aws_iam_policy" "tf_backend" {
   name        = "${aws_iam_user.cd.name}-tf-s3-dynamodb"
-  description = "Allow users to use s3 and dynamodb for terraform backend resources"
+  description = "Allow user to use S3 and DynamoDB for TF backend resources"
   policy      = data.aws_iam_policy_document.tf_backend.json
 }
 
@@ -166,9 +166,9 @@ data "aws_iam_policy_document" "rds" {
       "rds:DeleteDBSubnetGroup",
       "rds:CreateDBInstance",
       "rds:DeleteDBInstance",
-      "rds:ModifyDBSubnetGroup",
       "rds:ListTagsForResource",
       "rds:ModifyDBInstance",
+      "rds:ModifyDBSubnetGroup",
       "rds:AddTagsToResource"
     ]
     resources = ["*"]

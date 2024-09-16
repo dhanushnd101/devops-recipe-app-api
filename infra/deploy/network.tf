@@ -14,7 +14,7 @@ resource "aws_vpc" "main" {
 
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
-  
+
   tags = {
     Name = "${local.prefix}-main"
   }
@@ -141,9 +141,9 @@ resource "aws_vpc_endpoint" "ecr" {
   vpc_endpoint_type   = "Interface"
   private_dns_enabled = true
 
-  subnet_ids          = [aws_subnet.private_a.id, aws_subnet.private_b.id]
-  
-  security_group_ids  = [
+  subnet_ids = [aws_subnet.private_a.id, aws_subnet.private_b.id]
+
+  security_group_ids = [
     aws_security_group.endpoint_access.id
   ]
   tags = {
@@ -158,12 +158,12 @@ resource "aws_vpc_endpoint" "dkr" {
   vpc_endpoint_type   = "Interface"
   private_dns_enabled = true
 
-  subnet_ids          = [aws_subnet.private_a.id, aws_subnet.private_b.id]
-  
-  security_group_ids  = [
+  subnet_ids = [aws_subnet.private_a.id, aws_subnet.private_b.id]
+
+  security_group_ids = [
     aws_security_group.endpoint_access.id
   ]
-  
+
   tags = {
     Name = "${local.prefix}-dkr-endpoint"
   }
@@ -175,12 +175,12 @@ resource "aws_vpc_endpoint" "cloudwatch_logs" {
   vpc_endpoint_type   = "Interface"
   private_dns_enabled = true
 
-  subnet_ids          = [aws_subnet.private_a.id, aws_subnet.private_b.id]
-  
-  security_group_ids  = [
+  subnet_ids = [aws_subnet.private_a.id, aws_subnet.private_b.id]
+
+  security_group_ids = [
     aws_security_group.endpoint_access.id
   ]
-  
+
   tags = {
     Name = "${local.prefix}-cloudwatch-endpoint"
   }
@@ -192,12 +192,12 @@ resource "aws_vpc_endpoint" "ssm" {
   vpc_endpoint_type   = "Interface"
   private_dns_enabled = true
 
-  subnet_ids          = [aws_subnet.private_a.id, aws_subnet.private_b.id]
-  
-  security_group_ids  = [
+  subnet_ids = [aws_subnet.private_a.id, aws_subnet.private_b.id]
+
+  security_group_ids = [
     aws_security_group.endpoint_access.id
   ]
-  
+
   tags = {
     Name = "${local.prefix}-ssmmessages-endpoint"
   }
@@ -208,7 +208,7 @@ resource "aws_vpc_endpoint" "s3" {
   vpc_id            = aws_vpc.main.id
   service_name      = "com.amazonaws.${data.aws_region.current.name}.s3"
   vpc_endpoint_type = "Gateway"
-  route_table_ids   = [
+  route_table_ids = [
     aws_vpc.main.default_route_table_id
   ]
   tags = {

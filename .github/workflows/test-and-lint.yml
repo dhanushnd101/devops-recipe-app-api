@@ -5,7 +5,7 @@ on:
     secrets:
       DOCKERHUB_USER:
         required: true
-        description: "Username from Docker Hub aucthentication"
+        description: "Username for DockerHub auth"
       DOCKERHUB_TOKEN:
         required: true
         description: "Token for DockerHub auth"
@@ -47,8 +47,3 @@ jobs:
           docker compose run --rm terraform -chdir=setup/ fmt -check
           docker compose run --rm terraform -chdir=deploy/ validate
           docker compose run --rm terraform -chdir=deploy/ fmt -check
-          
-          
-
-
- 
