@@ -28,3 +28,28 @@ secret:
 
 destroy:
 	docker compose run --rm terraform -chdir=setup destroy
+
+# For deploy 
+dinit:
+	docker compose run --rm terraform -chdir=deploy init -migrate-state
+
+dfmt:
+	docker compose run --rm terraform -chdir=deploy fmt
+
+dval:
+	docker compose run --rm terraform -chdir=deploy validate
+
+dplan:
+	docker compose run --rm terraform -chdir=deploy plan
+
+dapply:
+	docker compose run --rm terraform -chdir=deploy apply
+
+doutput:
+	docker compose run --rm terraform -chdir=deploy output
+
+dsecret:
+	docker compose run --rm terraform -chdir=deploy output cd_user_access_key_secret
+
+ddestroy:
+	docker compose run --rm terraform -chdir=deploy destroy
